@@ -7,6 +7,7 @@
 # Ignore bundler config.
 /.bundle
 
+# Ignore vendor file
 /vendor/bundle/*
 /.gitconfig
 
