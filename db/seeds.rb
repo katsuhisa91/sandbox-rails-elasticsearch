@@ -18,8 +18,7 @@ ActiveRecord::Base.transaction do
   tokyo = Pref.create!(name: '東京都')
   kanagawa = Pref.create!(name: '神奈川県')
 
-  # レストラン作成(各カテゴリ, 都道府県の掛け算で6件)
-  Restaurant.create!([
+  restaurants = [
     {
       name: '松屋', name_kana: 'まつや', zip: '240-0113', address: '三浦郡葉山町堀内24-3',
       pref: tokyo, category: teisyoku, closed: false
@@ -44,5 +43,8 @@ ActiveRecord::Base.transaction do
       name: '沖縄そば やんばる', name_kana: 'おきなわそばやんばる', zip: '231-0011', address: '西区横浜1-11',
       pref: kanagawa, category: izakaya, closed: true
     }
-  ])
+  ] * 100
+
+  # レストラン作成(各カテゴリ, 都道府県の掛け算で6件)
+  Restaurant.create!(restaurants)
 end
